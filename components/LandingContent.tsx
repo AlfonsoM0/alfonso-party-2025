@@ -97,7 +97,7 @@ const LandingContent: React.FC<{ enterFunction?: () => void }> = ({ enterFunctio
   ];
 
   return (
-    <div className="min-h-screen w-full flex flex-col items-center justify-center bg-transparent text-slate-100 p-6 relative overflow-hidden">
+    <div className="min-h-screen w-full flex flex-col items-center justify-center bg-transparent text-slate-100 p-6 relative overflow-hidden z-10">
       {' '}
       {/* bg-transparent to let body/stage-lights show */}
       {/* Animated Party Lights Background */}

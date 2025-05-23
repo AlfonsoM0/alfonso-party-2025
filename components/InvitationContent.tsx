@@ -38,18 +38,19 @@ const VideoBackground: React.FC = () => {
   if (!currentVideoId) return null;
 
   return (
-    <div className="absolute top-0 left-0 w-full h-full z-0 overflow-hidden">
+    <div className="fixed inset-0 w-screen h-screen z-0 overflow-hidden pointer-events-none">
       <iframe
-        className="absolute top-1/2 left-1/2 w-[300%] h-[300%] sm:w-[200%] sm:h-[200%] md:w-full md:h-full object-cover transform -translate-x-1/2 -translate-y-1/2 pointer-events-none"
+        className="absolute top-0 left-0 w-full h-full object-cover"
         src={getYouTubeEmbedUrl(currentVideoId)}
         title="YouTube video player"
         frameBorder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowFullScreen // Note: allowfullscreen attribute is deprecated, allow="fullscreen" is preferred but iframe sandbox might restrict.
+        allowFullScreen
         aria-hidden="true"
+        tabIndex={-1}
+        style={{ pointerEvents: 'none' }}
       ></iframe>
-      <div className="absolute top-0 left-0 w-full h-full bg-slate-950 opacity-70"></div>{' '}
-      {/* Darker slate overlay for text readability */}
+      <div className="absolute top-0 left-0 w-full h-full bg-slate-950/80" />
     </div>
   );
 };
@@ -278,7 +279,7 @@ const InvitationContent: React.FC<InvitationContentProps> = ({ isPersonalized = 
   }
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-slate-900 p-6 text-center relative overflow-hidden">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-slate-900 p-6 text-center relative overflow-hidden z-10">
       <VideoBackground />
       <div
         className="z-10 relative transition-all duration-500 ease-in-out w-full max-w-xl"
@@ -394,7 +395,7 @@ const InvitationContent: React.FC<InvitationContentProps> = ({ isPersonalized = 
                 >
                   <span
                     className={`${
-                      diner ? 'translate-x-6' : 'translate-x-1'
+                      diner ? 'translate-x-[12px]' : 'translate-x-[2px]'
                     } inline-block w-4 h-4 transform bg-white rounded-full transition-transform`}
                   />
                 </button>
@@ -416,7 +417,7 @@ const InvitationContent: React.FC<InvitationContentProps> = ({ isPersonalized = 
                 >
                   <span
                     className={`${
-                      party ? 'translate-x-6' : 'translate-x-1'
+                      party ? 'translate-x-[12px]' : 'translate-x-[2px]'
                     } inline-block w-4 h-4 transform bg-white rounded-full transition-transform`}
                   />
                 </button>

@@ -7,8 +7,6 @@ import {
   deleteGuest,
   sendApprovalNotification,
   sortGuests,
-  PLACE_DINNER,
-  PLACE_PARTY,
 } from '../config';
 import { AuthContext } from '../App';
 
@@ -116,7 +114,7 @@ const AdminContent: React.FC<AdminContentProps> = ({ section }) => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-900 text-slate-100 p-4 md:p-8">
+    <div className="min-h-screen bg-slate-900 text-slate-100 p-4 md:p-8 relative z-10 overflow-x-auto">
       <div className="max-w-5xl mx-auto">
         <div className="flex flex-col sm:flex-row justify-between items-center mb-8">
           <LuminousText

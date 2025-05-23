@@ -1,0 +1,135 @@
+@import 'tailwindcss';
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  overscroll-behavior-y: contain; /* Prevents pull-to-refresh on mobile */
+  background-color: #0f172a; /* slate-900 */
+  color: #e2e8f0; /* slate-200 */
+}
+
+/* For text slide-up animation */
+.slide-up-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+.slide-up-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 300ms, transform 300ms;
+}
+.slide-up-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+.slide-up-exit-active {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 300ms, transform 300ms;
+}
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #020617; /* slate-950 */
+}
+::-webkit-scrollbar-thumb {
+  background: #ef4444; /* red-500 */
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #dc2626; /* red-600 */
+}
+
+/* Show Lights Animations */
+@keyframes sweepLight1 {
+  0%,
+  100% {
+    transform: translateX(-120%) skewX(-30deg);
+    opacity: 0.2;
+  }
+  50% {
+    transform: translateX(120%) skewX(-30deg);
+    opacity: 0.5;
+  }
+}
+@keyframes sweepLight2 {
+  0%,
+  100% {
+    transform: translateX(120%) skewX(-30deg);
+    opacity: 0.15;
+  }
+  50% {
+    transform: translateX(-120%) skewX(-30deg);
+    opacity: 0.4;
+  }
+}
+@keyframes pulseGlow {
+  0%,
+  100% {
+    box-shadow: 0 0 30px 10px rgba(220, 38, 38, 0.2), 0 0 50px 15px rgba(220, 38, 38, 0.1);
+    opacity: 0.3;
+  }
+  50% {
+    box-shadow: 0 0 45px 15px rgba(220, 38, 38, 0.35), 0 0 70px 25px rgba(220, 38, 38, 0.25);
+    opacity: 0.5;
+  }
+}
+
+.stage-light-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0; /* Behind content but above solid body background */
+}
+.stage-light {
+  position: absolute;
+  opacity: 0;
+}
+.light-beam-1 {
+  bottom: -50%;
+  left: 0; /* Start from bottom-leftish */
+  width: 150%;
+  height: 100px; /* Wide, shorter beam */
+  background: linear-gradient(
+    to right,
+    rgba(59, 130, 246, 0.05),
+    rgba(59, 130, 246, 0.3) 50%,
+    rgba(59, 130, 246, 0.05)
+  ); /* Blueish */
+  animation: sweepLight1 10s linear infinite;
+  animation-delay: 0s;
+  transform-origin: bottom left;
+}
+.light-beam-2 {
+  top: -50%;
+  right: 0; /* Start from top-rightish */
+  width: 150%;
+  height: 120px;
+  background: linear-gradient(
+    to left,
+    rgba(239, 68, 68, 0.05),
+    rgba(239, 68, 68, 0.25) 50%,
+    rgba(239, 68, 68, 0.05)
+  ); /* Reddish */
+  animation: sweepLight2 12s linear infinite;
+  animation-delay: -4s;
+  transform-origin: top right;
+}
+.background-glow-orb {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 60vmax;
+  height: 60vmax; /* Large, relative to viewport */
+  max-width: 800px;
+  max-height: 800px;
+  border-radius: 50%;
+  background-color: transparent; /* Base color is via box-shadow */
+  transform: translate(-50%, -50%);
+  animation: pulseGlow 8s ease-in-out infinite;
+}
