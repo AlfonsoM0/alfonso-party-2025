@@ -38,16 +38,11 @@ export const WEB_URL_FOR_EMAIL = import.meta.env.VITE_WEB_URL_FOR_EMAIL || 'http
 export const ADMIN_PASSWORD = import.meta.env.VITE_ADMIN_PASSWORD || 'supersecretpassword';
 
 export const YOUTUBE_VIDEO_IDS = [
-  // Faint (Official Music Video) [4K UPGRADE] – Linkin Park
-  '7odTcs48adrK9uq',
-  // Red Hot Chili Peppers - Can't Stop [Official Music Video]
-  'uSG4GFDlZF7cwFZb',
-  // Nickelback - Burn It to the Ground [OFFICIAL HD VIDEO]
-  'Bml1plCaMpcXRNH9',
-  // The Black Eyed Peas - I Gotta Feeling (Official Music Video)
-  'Fwd1Mbjqt1Kwqb3K',
-  // David Guetta - Titanium ft. Sia (Official Video)
-  'klFxMgKjTCJSAW9r',
+  'LYU-8IFcDPw', // Faint (Official Music Video) [4K UPGRADE] – Linkin Park
+  '8DyziWtkfBw', // Red Hot Chili Peppers - Can't Stop [Official Music Video]
+  'iSf_cs4-E-I', // Nickelback - Burn It to the Ground [OFFICIAL HD VIDEO]
+  'uSD4vsh1zDA', // The Black Eyed Peas - I Gotta Feeling (Official Music Video)
+  'JRfuAukYTKg', // David Guetta - Titanium ft. Sia (Official Video)
 ];
 
 export const PLACE_DINNER = {
