@@ -52,7 +52,7 @@ export const PLACE_DINNER = {
   mapsLink: 'https://maps.app.goo.gl/NZMi5fmaydSpDFAe8',
   mapButtonText: 'Ver en Google Maps',
   instagramLink: 'https://www.instagram.com/bless.sgo',
-  instagramButtonText: 'Ver Instatram',
+  instagramButtonText: 'Ver en Instatram',
 };
 
 export const PLACE_PARTY = {
@@ -61,7 +61,7 @@ export const PLACE_PARTY = {
   mapsLink: 'https://maps.app.goo.gl/N4hoguoExeH9LbQb8',
   mapButtonText: 'Ver en Google Maps',
   instagramLink: 'https://www.instagram.com/clubmeetoficial',
-  instagramButtonText: 'Ver Instatram',
+  instagramButtonText: 'Ver en Instatram',
 };
 
 // --- Types ---
