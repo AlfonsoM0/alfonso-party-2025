@@ -25,11 +25,11 @@ export function createHTMLString(guest: Guest): string {
             .event-details p { margin: 5px 0; color: #f1f5f9; font-size: 16px; }
             .event-title { font-weight: bold; color: #fbbf24; font-size: 18px; }
             .button-container { text-align: center; margin-top: 30px; }
-            .button { display: inline-block; background-color: #dc2626; color: #ffffff; text-decoration: none; font-weight: bold; padding: 8px 14px; border-radius: 9999px; transition: background-color 0.3s ease; margin: 0 3px 8px 3px; font-size: 13px; min-width: 120px; }
+            .button { display: inline-block; background-color: #dc2626; color: #fff !important; text-decoration: none; font-weight: bold; padding: 8px 14px; border-radius: 9999px; transition: background-color 0.3s ease; margin: 0 3px 8px 3px; font-size: 13px; min-width: 120px; text-align: center; }
             .button:hover { background-color: #b91c1c; }
-            .event-buttons { display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-start; margin-top: 10px; }
+            .event-buttons { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 10px; }
             @media (max-width: 600px) {
-              .event-buttons { flex-direction: column; align-items: stretch; gap: 6px; }
+              .event-buttons { flex-direction: column; align-items: center; gap: 6px; }
               .button { width: 100%; min-width: 0; margin: 0 0 6px 0; }
             }
             .footer { background-color: #334155; padding: 20px; text-align: center; font-size: 12px; color: #94a3b8; margin-top: 20px; }
