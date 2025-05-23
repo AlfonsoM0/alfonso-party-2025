@@ -1,7 +1,7 @@
 import { Guest, MY_NAME, PLACE_DINNER, PLACE_PARTY, WEB_URL_PRODUCTION } from '@/config';
 
 export function createHTMLString(guest: Guest): string {
-  const invitationUrl = `${WEB_URL_PRODUCTION}/inv/${guest.email}`;
+  const invitationUrl = `${WEB_URL_PRODUCTION}/#/inv/${guest.email}`;
 
   return `
     <!DOCTYPE html>

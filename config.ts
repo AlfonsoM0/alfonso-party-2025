@@ -151,7 +151,7 @@ export const sendApprovalNotification = async (guest: Guest): Promise<void> => {
     fromEmail: MY_EMAIL,
     to: [guest.email],
     subject: 'Invitación a Alfonso Party 2025',
-    text: `Tu invitación está en: ${WEB_URL_PRODUCTION}/inv/${guest.email}`,
+    text: `Tu invitación está en: ${WEB_URL_PRODUCTION}/#/inv/${guest.email}`,
     html: createHTMLString(guest),
   };
   try {
