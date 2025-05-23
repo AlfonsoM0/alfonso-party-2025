@@ -1,4 +1,3 @@
-
 // Basic service worker for PWA functionality (caching, offline access placeholder)
 const CACHE_NAME = 'cumple-alfonso-cache-v1';
 const urlsToCache = [
@@ -11,11 +10,10 @@ const urlsToCache = [
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then((cache) => {
-        console.log('Opened cache');
-        return cache.addAll(urlsToCache);
-      })
+    caches.open(CACHE_NAME).then((cache) => {
+      console.log('Opened cache');
+      return cache.addAll(urlsToCache);
+    })
   );
   self.skipWaiting();
 });
@@ -23,14 +21,12 @@ self.addEventListener('install', (event) => {
 self.addEventListener('fetch', (event) => {
   // Basic cache-first strategy
   event.respondWith(
-    caches.match(event.request)
-      .then((response) => {
-        if (response) {
-          return response;
-        }
-        return fetch(event.request);
+    caches.match(event.request).then((response) => {
+      if (response) {
+        return response;
       }
-    )
+      return fetch(event.request);
+    })
   );
 });
 
@@ -52,15 +48,15 @@ self.addEventListener('activate', (event) => {
 });
 
 // Placeholder for Push Notifications
-self.addEventListener('push', function(event) {
+self.addEventListener('push', function (event) {
   console.log('[Service Worker] Push Received.');
   console.log(`[Service Worker] Push had this data: "${event.data ? event.data.text() : ''}"`);
 
   const title = 'Notificación Cumple Alfonso';
   const options = {
     body: event.data ? event.data.text() : 'Tienes una nueva notificación.',
-    icon: 'https_picsum_photos_192_192.webp', // Replace with actual icon path
-    badge: 'https_picsum_photos_96_96.webp' // Replace with actual badge icon path
+    icon: '/img/maskable_icon_x192.png', // Icono real
+    badge: '/img/maskable_icon_x96.png', // Badge real
   };
 
   event.waitUntil(self.registration.showNotification(title, options));
