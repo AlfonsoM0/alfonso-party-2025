@@ -170,6 +170,7 @@ export const sendApprovalNotification = async (guest: Guest): Promise<void> => {
     console.log(`Email enviado a ${guest.email}`);
   } catch (error) {
     console.error(`Error al enviar el email a ${guest.email}:`, error);
+    alert(`Error al enviar el email a ${guest.name} ${guest.lastname} (${guest.email}).`);
   }
 };
 
