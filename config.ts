@@ -13,6 +13,7 @@ import {
   orderBy,
   Firestore,
 } from 'firebase/firestore';
+import { createHTMLString } from './utils/createHTMLString';
 
 // --- Firebase Configuration ---
 const firebaseConfig = {
@@ -49,18 +50,18 @@ export const PLACE_DINNER = {
   name: 'Bar Bless',
   schedule: 'Sábado 31 de Mayo, de 21:00 hs a 01:00 hs',
   mapsLink: 'https://maps.app.goo.gl/NZMi5fmaydSpDFAe8',
-  mapButtonText: 'Ver ubicación de la Cena en Google Maps',
+  mapButtonText: 'Ver en Google Maps',
   instagramLink: 'https://www.instagram.com/bless.sgo',
-  instagramButtonText: 'Visitar Instagram del Bar Bless',
+  instagramButtonText: 'Ver Instatram',
 };
 
 export const PLACE_PARTY = {
   name: 'Boliche Club Meet',
   schedule: 'Domingo 1 de Junio, de 01:00 hs a 06:00 hs',
   mapsLink: 'https://maps.app.goo.gl/N4hoguoExeH9LbQb8',
-  mapButtonText: 'Ver ubicación de la Fiesta en Google Maps',
+  mapButtonText: 'Ver en Google Maps',
   instagramLink: 'https://www.instagram.com/clubmeetoficial',
-  instagramButtonText: 'Visitar Instagram del Club Meet',
+  instagramButtonText: 'Ver Instatram',
 };
 
 // --- Types ---
@@ -192,93 +193,3 @@ export const sortGuests = (guests: Guest[]): Guest[] => {
     return timeB - timeA; // Newest first within the same approval group
   });
 };
-
-function createHTMLString(guest: Guest): string {
-  const invitationUrl = `${WEB_URL_PRODUCTION}/inv/${guest.email}`;
-
-  return `
-    <!DOCTYPE html>
-    <html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>¡Estás invitado a la fiesta de ${MY_NAME}!</title>
-        <style>
-            body { margin: 0; padding: 0; font-family: sans-serif; background-color: #0f172a; color: #e2e8f0; }
-            table { border-collapse: collapse; width: 100%; }
-            td { padding: 0; }
-            img { border: 0; }
-            .container { max-width: 600px; margin: 0 auto; background-color: #1e293b; border-radius: 8px; overflow: hidden; }
-            .header { background-color: #334155; padding: 20px; text-align: center; }
-            .header img { max-width: 100px; height: auto; }
-            .content { padding: 30px; text-align: center; }
-            .title { color: #f87171; font-size: 24px; font-weight: bold; margin-bottom: 20px; }
-            .greeting { color: #93c5fd; font-size: 18px; margin-bottom: 20px; }
-            .event-details { background-color: #334155; padding: 15px; border-radius: 4px; margin-bottom: 15px; text-align: left; }
-            .event-details p { margin: 5px 0; }
-            .event-title { font-weight: bold; color: #93c5fd; }
-            .button-container { text-align: center; margin-top: 30px; }
-            .button { display: inline-block; background-color: #dc2626; color: #ffffff; text-decoration: none; font-weight: bold; padding: 12px 24px; border-radius: 9999px; transition: background-color 0.3s ease; }
-            .button:hover { background-color: #b91c1c; }
-            .footer { background-color: #334155; padding: 20px; text-align: center; font-size: 12px; color: #94a3b8; margin-top: 20px; }
-        </style>
-    </head>
-    <body>
-        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
-            <tr>
-                <td style="padding: 20px 0;">
-                    <table role="presentation" cellspacing="0" cellpadding="0" border="0" align="center" class="container">
-                        <tr>
-                            <td class="header">
-                                <img src="${WEB_URL_PRODUCTION}/img/maskable_icon_x192.png" alt="Icono de la fiesta">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="content">
-                                <h1 class="title">¡Estás invitado a la fiesta de ${MY_NAME}!</h1>
-                                <p class="greeting">¡Hola ${guest.name} ${guest.lastname}!</p>
-                                <p style="color: #e2e8f0; font-size: 16px; line-height: 1.5; margin-bottom: 20px;">
-                                    ¡Prepárate para celebrar mi cumpleaños a lo grande! 🎉
-                                    Te espero para compartir un momento especial.
-                                </p>
-
-                                ${
-                                  guest.diner
-                                    ? `
-                                <div class="event-details">
-                                    <p class="event-title">Cena:</p>
-                                    <p>${PLACE_DINNER.name} - ${PLACE_DINNER.schedule}</p>
-                                </div>
-                                `
-                                    : ''
-                                }
-
-                                ${
-                                  guest.party
-                                    ? `
-                                <div class="event-details">
-                                    <p class="event-title">Fiesta:</p>
-                                    <p>${PLACE_PARTY.name} - ${PLACE_PARTY.schedule}</p>
-                                </div>
-                                `
-                                    : ''
-                                }
-
-                                <div class="button-container">
-                                    <a href="${invitationUrl}" class="button">Ver invitación</a>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="footer">
-                                <p>&copy; ${new Date().getFullYear()} Alfonso Party. Todos los derechos reservados.</p>
-                            </td>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
-        </table>
-    </body>
-    </html>
-  `;
-}
