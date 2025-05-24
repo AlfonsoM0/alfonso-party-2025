@@ -363,6 +363,73 @@ const InvitationContent: React.FC<InvitationContentProps> = ({ isPersonalized = 
               className="text-4xl sm:text-5xl font-bold text-red-600 mb-8"
               customGlow="filter drop-shadow-[0_0_2px_#fff] drop-shadow-[0_0_8px_#fff] drop-shadow-[0_0_20px_#ef4444] drop-shadow-[0_0_30px_#ef4444]"
             />
+            <LuminousText
+              text="¡Se viene el cumple del más amigable de la historia!"
+              as="h2"
+              className="text-2xl sm:text-3xl font-bold text-white mb-2"
+              customGlow="filter drop-shadow-[0_0_2px_#fff] drop-shadow-[0_0_8px_#ef4444] drop-shadow-[0_0_16px_#ef4444]"
+            />
+            <p className="text-slate-200 text-base sm:text-lg mb-2 font-semibold">
+              ¡Festejemos a lo grande!
+            </p>
+            <p className="text-slate-300 text-base mb-4">¡Hooola mis amigos! ¿Todo bien por ahí?</p>
+            <p className="text-slate-200 text-base mb-2">
+              Prepárense que este <span className="font-bold text-red-400">sábado 31 de mayo</span>{' '}
+              (¡sí, el cumple de este humilde servidor!) se arma un fiestón que va a quedar en la
+              historia. Olvídense de la rutina, porque la noche se viene picante y no pueden faltar.
+            </p>
+            <p className="text-slate-200 text-base mb-2">
+              Vamos a arrancar tempranito, a las{' '}
+              <span className="font-bold text-blue-300">21:00 HS. PUNTUAL</span> (¡no se hagan los
+              remolones!), comiendo y brindando en el{' '}
+              <span className="font-bold text-pink-400">Bless Bar</span>. Ese lugar es un golazo:
+              tienen unas ofertas de comida rápida que te explotan la cabeza y unos tragos en vasos
+              exóticos que son una locura. ¡La panza llena y el corazón contento para lo que se
+              viene!
+            </p>
+            <p className="text-slate-200 text-base mb-2">
+              A la medianoche, soplamos la velita del cumple, nos llenamos de azúcar con la torta y
+              nos preparamos para seguirla de largo. Porque la cosa no termina ahí,{' '}
+              <span className="font-bold text-rose-400">¡Qué salpique la joda!</span>
+            </p>
+            <p className="text-slate-200 text-base mb-2">
+              Después de la torta, nos vamos directo al boliche{' '}
+              <span className="font-bold text-blue-400">Club Meet</span>, que nos espera a la{' '}
+              <span className="font-bold text-blue-300">1:00 HS del domingo</span>. ¡Sí, el Club
+              Meet! Ese lugar donde la música es la mejor de todas las épocas, para que bailes hasta
+              que te duelan los pies. Además, nos tienen preparados unos vouchers de bebida para que
+              celebremos como se debe, <span className="font-bold text-yellow-300">¡EXPLOTA!</span>
+            </p>
+            <p className="text-slate-200 text-base mb-2">
+              La fiesta se pone buenísima hasta las{' '}
+              <span className="font-bold text-blue-300">6:00 HS del domingo</span>. ¡Aguante la
+              energía! Y lo mejor de todo es que ambos lugares quedan cerca, ¡así que nos
+              trasladamos cómodamente!
+            </p>
+            <p className="text-slate-200 text-base mb-2 mt-4">
+              <span className="font-bold text-red-400">¡Importante, mi gente!</span>
+              <br />
+              Para que organicemos todo de diez y no le fallemos a nadie, es re importante que
+              confirmen su asistencia. Necesito saber si van a la cena en Bless, a la fiesta en Club
+              Meet, o ¡si se prenden a ambas cosas!
+            </p>
+            <p className="text-slate-200 text-base mb-2">
+              Porfa, llenen este formulario para que tengamos la lista armada y se la pasemos al bar
+              y al boliche.{' '}
+              <span className="font-bold text-blue-300">
+                ¡Su confirmación es clave para que todo salga joya!
+              </span>
+            </p>
+            <p className="text-slate-200 text-base mb-2">
+              ¡No veo la hora de festejar con ustedes, mis amigos queridos!{' '}
+              <span className="font-bold text-yellow-200">¡Será una noche inolvidable!</span>
+            </p>
+            <p className="text-slate-200 text-base mb-2">¡Nos vemos el sábado!</p>
+            <p className="text-slate-400 text-base mt-4">
+              Un abrazo gigante,
+              <br />
+              <span className="font-bold text-white">Alfonso MO.-</span>
+            </p>
             <button
               onClick={() => setShowRsvpForm(true)}
               className="bg-gradient-to-r from-red-500 to-rose-600 hover:from-red-600 hover:to-rose-700 text-white font-bold py-3 px-8 rounded-full shadow-lg text-lg transform hover:scale-105 transition-all duration-300"

@@ -69,7 +69,7 @@ const App: React.FC = () => {
 
     return (
       <div className="min-h-screen flex flex-col items-center justify-center bg-slate-900 p-4">
-        <h1 className="text-3xl font-bold text-red-500 mb-6 filter drop-shadow-[0_0_3px_#fff] drop-shadow-[0_0_8px_#ef4444]">
+        <h1 className="text-3xl font-bold text-red-500 mb-6 filter [text-shadow:0_0_3px_white,0_0_8px_#ef4444]">
           Acceso Administrador
         </h1>
         <form
@@ -152,7 +152,7 @@ const App: React.FC = () => {
 
     return (
       <div className="min-h-screen bg-slate-900 text-slate-100 p-4 sm:p-8">
-        <h1 className="text-3xl sm:text-4xl font-bold text-center text-red-500 mb-6 filter drop-shadow-[0_0_3px_#fff] drop-shadow-[0_0_8px_#ef4444]">
+        <h1 className="text-3xl sm:text-4xl font-bold text-center text-red-500 mb-6 filter [text-shadow:0_0_3px_white,0_0_8px_#ef4444]">
           {title}
         </h1>
         <div className="bg-slate-800 shadow-2xl rounded-lg p-6 max-w-2xl mx-auto">
