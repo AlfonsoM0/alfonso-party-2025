@@ -132,7 +132,13 @@ export const updateGuestApproval = async (id: string, approved: boolean | null):
 
 export const deleteGuest = async (id: string): Promise<void> => {
   const guestDoc = doc(db, 'guests', id);
-  await deleteDoc(guestDoc);
+  try {
+    await deleteDoc(guestDoc);
+    console.log('Guest deleted:', id);
+  } catch (error) {
+    console.error(error);
+    alert('Perdón, no se pudo eliminar tu invitación.');
+  }
 };
 
 export const sendApprovalNotification = async (guest: Guest): Promise<boolean> => {

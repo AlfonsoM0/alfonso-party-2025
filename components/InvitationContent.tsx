@@ -8,6 +8,7 @@ import {
   PlaceDetails,
   addGuest,
   getGuestByEmail,
+  deleteGuest,
 } from '../config';
 import LandingContent from './LandingContent';
 import { MyVideoAndMusicBackground } from './MyVideoAndMusicBackground';
@@ -90,6 +91,8 @@ const InvitationContent: React.FC<InvitationContentProps> = ({ isPersonalized = 
   const navigate = useNavigate();
 
   const [isEntered, setIsEntered] = useState(false);
+  const [showDeleteWarning, setShowDeleteWarning] = useState(false);
+  const [deleting, setDeleting] = useState(false);
 
   useEffect(() => {
     if (isPersonalized && guestEmail) {
@@ -210,6 +213,52 @@ const InvitationContent: React.FC<InvitationContentProps> = ({ isPersonalized = 
         : '* Contacta a Alfonso para detalles.';
 
     if (!isEntered) return <LandingContent enterFunction={() => setIsEntered(true)} />;
+
+    if (showDeleteWarning)
+      return (
+        <div className="min-h-screen flex flex-col items-center justify-center bg-slate-900 p-6 text-center relative">
+          <MyVideoAndMusicBackground />
+          <div className="z-10 bg-slate-950/55 p-8 rounded-xl shadow-2xl max-w-lg w-full">
+            <LuminousText
+              text="¿Estás seguro de que quieres eliminar tu invitación?"
+              as="h1"
+              className="text-2xl text-red-400 mb-4"
+            />
+            <p className="text-slate-200 mb-6">
+              Esta acción <span className="font-bold text-red-500">no se puede deshacer</span>{' '}
+              <br /> y {MY_NAME} estará muy triste 😢.
+            </p>
+            <div className="flex justify-center gap-4 mt-4">
+              <button
+                onClick={() => setShowDeleteWarning(false)}
+                className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full text-sm transition-colors duration-150"
+                disabled={deleting}
+              >
+                Cancelar
+              </button>
+              <button
+                onClick={async () => {
+                  if (!personalizedGuest?.email) return;
+                  setDeleting(true);
+                  try {
+                    await deleteGuest(personalizedGuest.id || '');
+                    localStorage.removeItem('guestEmail');
+                    navigate('/');
+                  } catch (e) {
+                    setDeleting(false);
+                    alert('Error al eliminar la invitación. Intenta de nuevo.');
+                  }
+                }}
+                className="bg-red-700 hover:bg-red-800 text-white font-bold py-2 px-4 rounded-full text-sm transition-colors duration-150"
+                disabled={deleting}
+              >
+                {deleting ? 'Eliminando...' : 'Eliminar invitación'}
+              </button>
+            </div>
+          </div>
+        </div>
+      );
+
     return (
       <div className="min-h-screen flex flex-col items-center justify-center bg-slate-900 p-6 text-center relative">
         <MyVideoAndMusicBackground />
@@ -227,10 +276,10 @@ const InvitationContent: React.FC<InvitationContentProps> = ({ isPersonalized = 
           {personalizedGuest.diner && (
             <div className="mb-3 text-left bg-slate-800/70 p-3 rounded">
               <p className="font-semibold text-blue-300">Cena:</p>
-              <p className="text-slate-200">
+              <p className="text-slate-200 text-center">
                 {PLACE_DINNER.name} - {PLACE_DINNER.schedule}
               </p>
-              <div className="flex gap-2 mt-2">
+              <div className="flex justify-center gap-2 mt-2">
                 <a
                   href={PLACE_DINNER.instagramLink}
                   target="_blank"
@@ -253,10 +302,10 @@ const InvitationContent: React.FC<InvitationContentProps> = ({ isPersonalized = 
           {personalizedGuest.party && (
             <div className="mb-3 text-left bg-slate-800/70 p-3 rounded">
               <p className="font-semibold text-blue-300">Fiesta:</p>
-              <p className="text-slate-200">
+              <p className="text-slate-200 text-center">
                 {PLACE_PARTY.name} - {PLACE_PARTY.schedule}
               </p>
-              <div className="flex gap-2 mt-2">
+              <div className="flex justify-center gap-2 mt-2">
                 <a
                   href={PLACE_PARTY.instagramLink}
                   target="_blank"
@@ -276,6 +325,23 @@ const InvitationContent: React.FC<InvitationContentProps> = ({ isPersonalized = 
               </div>
             </div>
           )}
+          <div className="flex justify-center gap-2 mt-4">
+            <button
+              onClick={() => {
+                localStorage.removeItem('guestEmail');
+                navigate('/');
+              }}
+              className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded-full text-xs transition-colors duration-150"
+            >
+              Pedir otra entrada
+            </button>
+            <button
+              onClick={() => setShowDeleteWarning(true)}
+              className="inline-block bg-red-700 hover:bg-red-800 text-white font-bold py-1 px-3 rounded-full text-xs transition-colors duration-150 border border-red-300 opacity-80"
+            >
+              Eliminar mi entrada
+            </button>
+          </div>
           <p className="text-sm text-slate-400 mt-6">{validityText}</p>
         </div>
       </div>
