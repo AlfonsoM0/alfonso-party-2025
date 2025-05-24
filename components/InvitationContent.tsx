@@ -23,7 +23,8 @@ const LuminousText: React.FC<{
   const defaultGlow =
     'filter drop-shadow-[0_0_2px_rgba(255,255,255,0.7)] drop-shadow-[0_0_6px_rgba(239,68,68,0.6)] drop-shadow-[0_0_12px_rgba(239,68,68,0.4)] drop-shadow-[0_0_8px_rgba(59,130,246,0.3)]'; // White base, red primary, blue secondary glow
   const glowStyle = customGlow || defaultGlow;
-  return <Component className={`${glowStyle} ${className}`}>{text}</Component>;
+  // Se agrega text-center por defecto
+  return <Component className={`text-center ${glowStyle} ${className}`}>{text}</Component>;
 };
 
 const PlaceInfoModal: React.FC<{ place: PlaceDetails; onClose: () => void }> = ({
