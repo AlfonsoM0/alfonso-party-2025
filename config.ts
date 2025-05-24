@@ -135,7 +135,7 @@ export const deleteGuest = async (id: string): Promise<void> => {
   await deleteDoc(guestDoc);
 };
 
-export const sendApprovalNotification = async (guest: Guest): Promise<void> => {
+export const sendApprovalNotification = async (guest: Guest): Promise<boolean> => {
   const EmailParams: {
     bussinessName: string;
     fromName: string;
@@ -167,9 +167,12 @@ export const sendApprovalNotification = async (guest: Guest): Promise<void> => {
     }
 
     console.log(`Email enviado a ${guest.email}`);
+
+    return true;
   } catch (error) {
     console.error(`Error al enviar el email a ${guest.email}:`, error);
     alert(`Error al enviar el email a ${guest.name} ${guest.lastname} (${guest.email}).`);
+    return false;
   }
 };
 

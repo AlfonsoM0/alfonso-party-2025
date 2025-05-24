@@ -56,10 +56,12 @@ const AdminContent: React.FC<AdminContentProps> = ({ section }) => {
   const handleApprove = async (guest: Guest) => {
     if (guest.id) {
       setLoadingApprove(true);
-      await updateGuestApproval(guest.id, true);
-      await sendApprovalNotification({ ...guest, approved: true });
+      const success = await sendApprovalNotification({ ...guest, approved: true });
+      if (success) {
+        await updateGuestApproval(guest.id, true);
+        fetchGuestsData();
+      }
       setLoadingApprove(false);
-      fetchGuestsData();
     }
   };
 
