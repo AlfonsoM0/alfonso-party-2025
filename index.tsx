@@ -14,17 +14,9 @@ root.render(
   </React.StrictMode>
 );
 
-// Register Service Worker for PWA
+// Registro del service worker para PWA
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    // En Vite, el service worker debe estar en /public y se accede como '/service-worker.js'
-    navigator.serviceWorker
-      .register('/service-worker.js')
-      .then((registration) => {
-        console.log('ServiceWorker registration successful with scope: ', registration.scope);
-      })
-      .catch((error) => {
-        console.log('ServiceWorker registration failed: ', error);
-      });
+    navigator.serviceWorker.register('/service-worker.js');
   });
 }
