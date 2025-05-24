@@ -93,6 +93,8 @@ const InvitationContent: React.FC<InvitationContentProps> = ({ isPersonalized = 
 
   useEffect(() => {
     if (isPersonalized && guestEmail) {
+      // guardar el correo en localStorage
+      localStorage.setItem('guestEmail', guestEmail);
       const fetchGuest = async () => {
         setLoadingPersonalized(true);
         try {
@@ -228,6 +230,24 @@ const InvitationContent: React.FC<InvitationContentProps> = ({ isPersonalized = 
               <p className="text-slate-200">
                 {PLACE_DINNER.name} - {PLACE_DINNER.schedule}
               </p>
+              <div className="flex gap-2 mt-2">
+                <a
+                  href={PLACE_DINNER.instagramLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block bg-pink-600 hover:bg-pink-700 text-white font-bold py-1 px-3 rounded-full text-xs transition-colors duration-150"
+                >
+                  {PLACE_DINNER.instagramButtonText}
+                </a>
+                <a
+                  href={PLACE_DINNER.mapsLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded-full text-xs transition-colors duration-150"
+                >
+                  {PLACE_DINNER.mapButtonText}
+                </a>
+              </div>
             </div>
           )}
           {personalizedGuest.party && (
@@ -236,15 +256,27 @@ const InvitationContent: React.FC<InvitationContentProps> = ({ isPersonalized = 
               <p className="text-slate-200">
                 {PLACE_PARTY.name} - {PLACE_PARTY.schedule}
               </p>
+              <div className="flex gap-2 mt-2">
+                <a
+                  href={PLACE_PARTY.instagramLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block bg-pink-600 hover:bg-pink-700 text-white font-bold py-1 px-3 rounded-full text-xs transition-colors duration-150"
+                >
+                  {PLACE_PARTY.instagramButtonText}
+                </a>
+                <a
+                  href={PLACE_PARTY.mapsLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded-full text-xs transition-colors duration-150"
+                >
+                  {PLACE_PARTY.mapButtonText}
+                </a>
+              </div>
             </div>
           )}
           <p className="text-sm text-slate-400 mt-6">{validityText}</p>
-          {/* <button
-            onClick={() => navigate('/')}
-            className="mt-8 bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full"
-          >
-            Volver al Inicio
-          </button> */}
         </div>
       </div>
     );
