@@ -2,16 +2,15 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import {
   MY_NAME,
-  YOUTUBE_VIDEO_IDS,
   PLACE_DINNER,
   PLACE_PARTY,
   Guest,
   PlaceDetails,
   addGuest,
   getGuestByEmail,
-  getYouTubeEmbedUrl,
 } from '../config';
 import LandingContent from './LandingContent';
+import { MyVideoAndMusicBackground } from './MyVideoAndMusicBackground';
 
 // Reusable LuminousText component
 const LuminousText: React.FC<{
@@ -25,34 +24,6 @@ const LuminousText: React.FC<{
     'filter drop-shadow-[0_0_2px_rgba(255,255,255,0.7)] drop-shadow-[0_0_6px_rgba(239,68,68,0.6)] drop-shadow-[0_0_12px_rgba(239,68,68,0.4)] drop-shadow-[0_0_8px_rgba(59,130,246,0.3)]'; // White base, red primary, blue secondary glow
   const glowStyle = customGlow || defaultGlow;
   return <Component className={`${glowStyle} ${className}`}>{text}</Component>;
-};
-
-const VideoBackground: React.FC = () => {
-  const [currentVideoId, setCurrentVideoId] = useState<string>('');
-
-  useEffect(() => {
-    const randomIndex = Math.floor(Math.random() * YOUTUBE_VIDEO_IDS.length);
-    setCurrentVideoId(YOUTUBE_VIDEO_IDS[randomIndex]);
-  }, []);
-
-  if (!currentVideoId) return null;
-
-  return (
-    <div className="fixed inset-0 w-screen h-screen z-0 overflow-hidden pointer-events-none">
-      <iframe
-        className="absolute top-0 left-0 w-full h-full object-cover"
-        src={getYouTubeEmbedUrl(currentVideoId)}
-        title="YouTube video player"
-        frameBorder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowFullScreen
-        aria-hidden="true"
-        tabIndex={-1}
-        style={{ pointerEvents: 'none' }}
-      ></iframe>
-      <div className="absolute top-0 left-0 w-full h-full bg-slate-950/80" />
-    </div>
-  );
 };
 
 const PlaceInfoModal: React.FC<{ place: PlaceDetails; onClose: () => void }> = ({
@@ -210,7 +181,7 @@ const InvitationContent: React.FC<InvitationContentProps> = ({ isPersonalized = 
       if (!isEntered) return <LandingContent enterFunction={() => setIsEntered(true)} />;
       return (
         <div className="min-h-screen flex flex-col items-center justify-center bg-slate-900 p-6 text-center relative">
-          <VideoBackground />
+          <MyVideoAndMusicBackground />
           <div className="z-10 bg-slate-950/80 p-8 rounded-xl shadow-2xl">
             <LuminousText
               text={submissionMessage || 'Invitación no válida o pendiente.'}
@@ -238,7 +209,7 @@ const InvitationContent: React.FC<InvitationContentProps> = ({ isPersonalized = 
     if (!isEntered) return <LandingContent enterFunction={() => setIsEntered(true)} />;
     return (
       <div className="min-h-screen flex flex-col items-center justify-center bg-slate-900 p-6 text-center relative">
-        <VideoBackground />
+        <MyVideoAndMusicBackground />
         <div className="z-10 bg-slate-950/80 p-8 rounded-xl shadow-2xl max-w-lg w-full">
           <LuminousText
             text={`¡Hola ${personalizedGuest.name} ${personalizedGuest.lastname}!`}
@@ -280,7 +251,7 @@ const InvitationContent: React.FC<InvitationContentProps> = ({ isPersonalized = 
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-slate-900 p-6 text-center relative overflow-hidden z-10">
-      <VideoBackground />
+      <MyVideoAndMusicBackground />
       <div
         className="z-10 relative transition-all duration-500 ease-in-out w-full max-w-xl"
         style={{ transform: showRsvpForm ? 'translateY(-60px)' : 'translateY(0)' }}

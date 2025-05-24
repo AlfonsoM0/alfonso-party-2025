@@ -37,13 +37,13 @@ export const WEB_URL_PRODUCTION = import.meta.env.VITE_WEB_URL_PRODUCTION || '';
 export const WEB_URL_FOR_EMAIL = import.meta.env.VITE_WEB_URL_FOR_EMAIL || 'http://localhost:3000';
 export const ADMIN_PASSWORD = import.meta.env.VITE_ADMIN_PASSWORD || 'supersecretpassword';
 
-export const YOUTUBE_VIDEO_IDS = [
-  'LYU-8IFcDPw', // Faint (Official Music Video) [4K UPGRADE] – Linkin Park
-  '8DyziWtkfBw', // Red Hot Chili Peppers - Can't Stop [Official Music Video]
-  'iSf_cs4-E-I', // Nickelback - Burn It to the Ground [OFFICIAL HD VIDEO]
-  'uSD4vsh1zDA', // The Black Eyed Peas - I Gotta Feeling (Official Music Video)
-  'JRfuAukYTKg', // David Guetta - Titanium ft. Sia (Official Video)
-];
+// export const YOUTUBE_VIDEO_IDS = [
+//   'LYU-8IFcDPw', // Faint (Official Music Video) [4K UPGRADE] – Linkin Park
+//   '8DyziWtkfBw', // Red Hot Chili Peppers - Can't Stop [Official Music Video]
+//   'iSf_cs4-E-I', // Nickelback - Burn It to the Ground [OFFICIAL HD VIDEO]
+//   'uSD4vsh1zDA', // The Black Eyed Peas - I Gotta Feeling (Official Music Video)
+//   'JRfuAukYTKg', // David Guetta - Titanium ft. Sia (Official Video)
+// ];
 
 export const PLACE_DINNER = {
   name: 'Bar Bless',
@@ -173,11 +173,11 @@ export const sendApprovalNotification = async (guest: Guest): Promise<void> => {
   }
 };
 
-export const getYouTubeEmbedUrl = (videoId: string): string => {
-  // Ensure autoplay with sound after user interaction. Mute might be necessary for initial load depending on browser policy.
-  // For this app, user clicks "Enter" first, which counts as interaction.
-  return `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=0&loop=1&playlist=${videoId}&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1`;
-};
+// export const getYouTubeEmbedUrl = (videoId: string): string => {
+//   // Ensure autoplay with sound after user interaction. Mute might be necessary for initial load depending on browser policy.
+//   // For this app, user clicks "Enter" first, which counts as interaction.
+//   return `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=0&loop=1&playlist=${videoId}&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1`;
+// };
 
 // Helper for sorting guests in admin panel
 export const sortGuests = (guests: Guest[]): Guest[] => {
