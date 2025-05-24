@@ -7,7 +7,7 @@ import {
   ADMIN_PASSWORD,
   Guest,
   getGuests,
-  getGuestByEmail,
+  // getGuestByEmail,
   PLACE_DINNER,
   PLACE_PARTY,
 } from './config';

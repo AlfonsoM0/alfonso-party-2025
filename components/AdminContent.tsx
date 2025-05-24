@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useContext } from 'react';
+import React, { useState, useEffect, useCallback, useContext, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import {
   Guest,
@@ -63,6 +63,25 @@ const AdminContent: React.FC<AdminContentProps> = ({ section }) => {
       }
       setLoadingApprove(false);
     }
+  };
+
+  const guestsToApprove = useMemo(
+    () => guests.filter((guest) => guest.approved !== true),
+    [guests]
+  );
+
+  const handleApproveAll = async () => {
+    setLoadingApprove(true);
+    for (const guest of guestsToApprove) {
+      if (guest.id) {
+        const success = await sendApprovalNotification({ ...guest, approved: true });
+        if (success) {
+          await updateGuestApproval(guest.id, true);
+        }
+      }
+    }
+    setLoadingApprove(false);
+    fetchGuestsData();
   };
 
   const handleDisapprove = async (guestId: string) => {
@@ -132,7 +151,7 @@ const AdminContent: React.FC<AdminContentProps> = ({ section }) => {
           </button>
         </div>
 
-        <div className="mb-6 flex flex-wrap gap-4">
+        <div className="mb-6 flex flex-wrap gap-4 justify-center">
           <Link
             to="/adm/cena"
             target="_blank"
@@ -151,9 +170,86 @@ const AdminContent: React.FC<AdminContentProps> = ({ section }) => {
           </Link>
         </div>
 
+        {guestsToApprove.length > 0 && (
+          <div className="mb-6 flex justify-center">
+            <button
+              onClick={handleApproveAll}
+              className="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-md transition-colors"
+            >
+              Aprobar Todos los Invitados
+            </button>
+          </div>
+        )}
+
         {section === 'dashboard' && (
           <div className="bg-slate-800 shadow-2xl rounded-lg overflow-x-auto">
-            <table className="w-full min-w-max text-sm text-left text-slate-300">
+            {/* Vista de tabla para desktop, tarjetas para móvil */}
+            <div className="block md:hidden divide-y divide-slate-700">
+              {guests.length === 0 && (
+                <div className="p-6 text-center text-slate-400">No hay invitados registrados.</div>
+              )}
+              {guests.map((guest) => (
+                <div
+                  key={guest.id}
+                  className="p-4 flex flex-col gap-2 bg-slate-700/60 rounded-xl my-3 shadow-md"
+                >
+                  <div className="flex flex-col gap-1">
+                    <span className="font-bold text-slate-100 text-base">
+                      {guest.name} {guest.lastname}
+                    </span>
+                    <span className="text-slate-300 text-sm break-all">{guest.email}</span>
+                  </div>
+                  <div className="flex flex-wrap gap-2 text-sm mt-1">
+                    <span className="bg-blue-900/60 px-2 py-1 rounded text-blue-300">
+                      Cena: {guest.diner ? '✔️' : '❌'}
+                    </span>
+                    <span className="bg-rose-900/60 px-2 py-1 rounded text-rose-300">
+                      Fiesta: {guest.party ? '✔️' : '❌'}
+                    </span>
+                    <span className="bg-slate-800/80 px-2 py-1 rounded">
+                      Estado: {getApprovalStatusText(guest.approved)}
+                    </span>
+                  </div>
+                  <div className="flex flex-wrap gap-2 mt-2">
+                    {guest.approved !== true && (
+                      <button
+                        onClick={() => handleApprove(guest)}
+                        className="flex-1 p-2 text-xs bg-sky-600 hover:bg-sky-700 rounded-md transition-colors text-white"
+                        title="Aprobar"
+                      >
+                        {loadingApprove ? '⏳ Cargando' : '✅ Aprobar'}
+                      </button>
+                    )}
+                    {guest.approved !== false && (
+                      <button
+                        onClick={() => guest.id && handleDisapprove(guest.id)}
+                        className="flex-1 p-2 text-xs bg-red-600 hover:bg-red-700 rounded-md transition-colors text-white"
+                        title="Rechazar"
+                      >
+                        ❌ Rechazar
+                      </button>
+                    )}
+                    {guest.approved !== null && (
+                      <button
+                        onClick={() => guest.id && handleSetPending(guest.id)}
+                        className="flex-1 p-2 text-xs bg-yellow-500 hover:bg-yellow-600 rounded-md transition-colors text-slate-800"
+                        title="Marcar como Pendiente"
+                      >
+                        ⏳ Pendiente
+                      </button>
+                    )}
+                    <button
+                      onClick={() => guest.id && handleDelete(guest.id)}
+                      className="flex-1 p-2 text-xs bg-slate-600 hover:bg-slate-500 rounded-md transition-colors text-white"
+                      title="Eliminar"
+                    >
+                      🗑️ Eliminar
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <table className="w-full min-w-max text-sm text-left text-slate-300 hidden md:table">
               <thead className="text-xs text-blue-300 uppercase bg-slate-700">
                 <tr>
                   <th scope="col" className="px-4 py-3">
