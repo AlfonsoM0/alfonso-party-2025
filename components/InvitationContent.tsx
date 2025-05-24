@@ -12,6 +12,7 @@ import {
 } from '../config';
 import LandingContent from './LandingContent';
 import { MyVideoAndMusicBackground } from './MyVideoAndMusicBackground';
+import WeNeedYouImg from './WeNeedYouImg';
 
 // Reusable LuminousText component
 const LuminousText: React.FC<{
@@ -358,75 +359,40 @@ const InvitationContent: React.FC<InvitationContentProps> = ({ isPersonalized = 
         {!submissionMessage && !showRsvpForm && (
           <div className="bg-slate-950/70 p-2 rounded-xl shadow-2xl">
             <LuminousText
-              text={`¡Te invito a festejar mi cumpleaños!`}
+              text="¡Se viene el cumple más amigable de la historia!"
               as="h1"
-              className="text-4xl sm:text-5xl font-bold text-red-600 mb-8"
-              customGlow="filter drop-shadow-[0_0_2px_#fff] drop-shadow-[0_0_8px_#fff] drop-shadow-[0_0_20px_#ef4444] drop-shadow-[0_0_30px_#ef4444]"
-            />
-            <LuminousText
-              text="¡Se viene el cumple del más amigable de la historia!"
-              as="h2"
-              className="text-2xl sm:text-3xl font-bold text-white mb-2"
+              className="text-2xl sm:text-3xl font-bold text-white my-3"
               customGlow="filter drop-shadow-[0_0_2px_#fff] drop-shadow-[0_0_8px_#ef4444] drop-shadow-[0_0_16px_#ef4444]"
             />
             <p className="text-slate-200 text-base sm:text-lg mb-2 font-semibold">
-              ¡Festejemos a lo grande!
+              ¡Y estás invitado!
             </p>
-            <p className="text-slate-300 text-base mb-4">¡Hooola! ¿Todo bien por ahí?</p>
-            <p className="text-slate-200 text-base mb-2">
-              Prepárate que este <span className="font-bold text-red-400">sábado 31 de mayo</span>{' '}
-              (¡sí, el cumple de este humilde servidor!) se arma un fiestón que va a quedar en la
-              historia. Olvídate de la rutina, porque la noche se viene picante y no puedes faltar.
+            <p className="text-slate-300 text-base mb-4">
+              Sábado 31 de mayo, desde las <span className="font-bold text-blue-300">21:00</span>.
             </p>
             <p className="text-slate-200 text-base mb-2">
-              Vamos a arrancar tempranito, a las{' '}
-              <span className="font-bold text-blue-300">21:00 HS. PUNTUAL</span> (¡no te hagas el
-              remolón!), comiendo y brindando en el{' '}
-              <span className="font-bold text-pink-400">Bless Bar</span>. Ese lugar es un golazo:
-              tienen unas ofertas de comida rápida que te explotan la cabeza y unos tragos en vasos
-              exóticos que son una locura. ¡La panza llena y el corazón contento para lo que se
-              viene!
+              Empezamos con cena y brindis en{' '}
+              <span className="font-bold text-pink-400">Bless Bar</span> 🥂.
             </p>
             <p className="text-slate-200 text-base mb-2">
-              A la medianoche, soplamos la velita del cumple, nos llenamos de azúcar con la torta y
-              nos preparamos para seguirla de largo. Porque la cosa no termina ahí. <br />
-              <span className="font-bold text-rose-400">¡Que salpique la joda!</span>
-            </p>
-            <p className="text-slate-200 text-base mb-2">
-              Después de la torta, nos vamos directo al boliche{' '}
-              <span className="font-bold text-blue-400">Club Meet</span>, que nos espera a la{' '}
-              <span className="font-bold text-blue-300">1:00 HS del domingo</span>. ¡Sí, el Club
-              Meet! Ese lugar donde la música es la mejor de todas las épocas, para que bailes hasta
-              que te duelan los pies. Además, nos tienen preparados unos vouchers de bebida para que
-              celebremos como se debe, <span className="font-bold text-yellow-300">¡EXPLOTA!</span>
-            </p>
-            <p className="text-slate-200 text-base mb-2">
-              La fiesta se pone buenísima hasta las{' '}
-              <span className="font-bold text-blue-300">6:00 HS del domingo</span>. ¡Aguante la
-              energía! Y lo mejor de todo es que ambos lugares quedan cerca, ¡así que nos
-              trasladamos cómodamente!
+              A la medianoche, torta. Después, seguimos la fiesta en{' '}
+              <span className="font-bold text-blue-400">Club Meet</span> 🕺 desde la{' '}
+              <span className="font-bold text-blue-300">1:00</span> hasta las{' '}
+              <span className="font-bold text-blue-300">6:00</span>.
             </p>
             <p className="text-slate-200 text-base mb-2 mt-4">
-              <span className="font-bold text-red-400">¡Importante!</span>
-              <br />
-              Para que organicemos todo de diez y no le fallemos a nadie, es re importante que
-              confirmes tu asistencia. Necesito saber si vas a la cena en Bless, a la fiesta en Club
-              Meet, o ¡si te prendes a ambas cosas!
+              <span className="font-bold text-red-400">¡Confirmá tu asistencia!</span> <br /> Decime
+              si venís a la cena, a la fiesta o a las dos.
             </p>
             <p className="text-slate-200 text-base mb-2">
-              Porfa, llena el formulario cuando Confirmes Asistencia para que tengamos la lista
-              armada y se la pasemos al bar y al boliche. <br />
-              <span className="font-bold text-blue-300">
-                ¡Tu confirmación es clave para que todo salga joya!
-              </span>
+              Completá el formulario para estar en la lista.
             </p>
-            <p className="text-slate-200 text-base mb-2">
-              ¡No veo la hora de festejar con vos, mi amigo/a querido/a! <br />
-              <span className="font-bold text-yellow-200">¡Será una noche inolvidable!</span>
-            </p>
-            <p className="text-slate-200 text-base mb-2">¡Nos vemos el sábado!</p>
+            <p className="text-slate-200 text-base mb-2">¡Froma parte de una noche inolvidable!</p>
+            <div className="flex justify-center my-4">
+              <WeNeedYouImg sizeCSS="max-w-[180px] w-full h-40" />
+            </div>
             <p className="text-slate-400 text-base mt-4">
-              Un abrazo gigante,
+              Un abrazo 🫂,
               <br />
               <span className="font-bold text-white">Alfonso MO.-</span>
             </p>
