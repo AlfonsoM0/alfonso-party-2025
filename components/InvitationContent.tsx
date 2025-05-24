@@ -356,7 +356,7 @@ const InvitationContent: React.FC<InvitationContentProps> = ({ isPersonalized = 
         style={{ transform: showRsvpForm ? 'translateY(-60px)' : 'translateY(0)' }}
       >
         {!submissionMessage && !showRsvpForm && (
-          <div className="bg-slate-950/70 p-8 rounded-xl shadow-2xl">
+          <div className="bg-slate-950/70 p-2 rounded-xl shadow-2xl">
             <LuminousText
               text={`¡Te invito a festejar mi cumpleaños!`}
               as="h1"
@@ -372,16 +372,16 @@ const InvitationContent: React.FC<InvitationContentProps> = ({ isPersonalized = 
             <p className="text-slate-200 text-base sm:text-lg mb-2 font-semibold">
               ¡Festejemos a lo grande!
             </p>
-            <p className="text-slate-300 text-base mb-4">¡Hooola mis amigos! ¿Todo bien por ahí?</p>
+            <p className="text-slate-300 text-base mb-4">¡Hooola! ¿Todo bien por ahí?</p>
             <p className="text-slate-200 text-base mb-2">
-              Prepárense que este <span className="font-bold text-red-400">sábado 31 de mayo</span>{' '}
+              Prepárate que este <span className="font-bold text-red-400">sábado 31 de mayo</span>{' '}
               (¡sí, el cumple de este humilde servidor!) se arma un fiestón que va a quedar en la
-              historia. Olvídense de la rutina, porque la noche se viene picante y no pueden faltar.
+              historia. Olvídate de la rutina, porque la noche se viene picante y no puedes faltar.
             </p>
             <p className="text-slate-200 text-base mb-2">
               Vamos a arrancar tempranito, a las{' '}
-              <span className="font-bold text-blue-300">21:00 HS. PUNTUAL</span> (¡no se hagan los
-              remolones!), comiendo y brindando en el{' '}
+              <span className="font-bold text-blue-300">21:00 HS. PUNTUAL</span> (¡no te hagas el
+              remolón!), comiendo y brindando en el{' '}
               <span className="font-bold text-pink-400">Bless Bar</span>. Ese lugar es un golazo:
               tienen unas ofertas de comida rápida que te explotan la cabeza y unos tragos en vasos
               exóticos que son una locura. ¡La panza llena y el corazón contento para lo que se
@@ -389,8 +389,8 @@ const InvitationContent: React.FC<InvitationContentProps> = ({ isPersonalized = 
             </p>
             <p className="text-slate-200 text-base mb-2">
               A la medianoche, soplamos la velita del cumple, nos llenamos de azúcar con la torta y
-              nos preparamos para seguirla de largo. Porque la cosa no termina ahí,{' '}
-              <span className="font-bold text-rose-400">¡Qué salpique la joda!</span>
+              nos preparamos para seguirla de largo. Porque la cosa no termina ahí. <br />
+              <span className="font-bold text-rose-400">¡Que salpique la joda!</span>
             </p>
             <p className="text-slate-200 text-base mb-2">
               Después de la torta, nos vamos directo al boliche{' '}
@@ -407,21 +407,21 @@ const InvitationContent: React.FC<InvitationContentProps> = ({ isPersonalized = 
               trasladamos cómodamente!
             </p>
             <p className="text-slate-200 text-base mb-2 mt-4">
-              <span className="font-bold text-red-400">¡Importante, mi gente!</span>
+              <span className="font-bold text-red-400">¡Importante!</span>
               <br />
               Para que organicemos todo de diez y no le fallemos a nadie, es re importante que
-              confirmen su asistencia. Necesito saber si van a la cena en Bless, a la fiesta en Club
-              Meet, o ¡si se prenden a ambas cosas!
+              confirmes tu asistencia. Necesito saber si vas a la cena en Bless, a la fiesta en Club
+              Meet, o ¡si te prendes a ambas cosas!
             </p>
             <p className="text-slate-200 text-base mb-2">
-              Porfa, llenen este formulario para que tengamos la lista armada y se la pasemos al bar
-              y al boliche. <br />
+              Porfa, llena el formulario cuando Confirmes Asistencia para que tengamos la lista
+              armada y se la pasemos al bar y al boliche. <br />
               <span className="font-bold text-blue-300">
                 ¡Tu confirmación es clave para que todo salga joya!
               </span>
             </p>
             <p className="text-slate-200 text-base mb-2">
-              ¡No veo la hora de festejar con ustedes, mis amigos queridos! <br />
+              ¡No veo la hora de festejar con vos, mi amigo/a querido/a! <br />
               <span className="font-bold text-yellow-200">¡Será una noche inolvidable!</span>
             </p>
             <p className="text-slate-200 text-base mb-2">¡Nos vemos el sábado!</p>
@@ -432,7 +432,7 @@ const InvitationContent: React.FC<InvitationContentProps> = ({ isPersonalized = 
             </p>
             <button
               onClick={() => setShowRsvpForm(true)}
-              className="mt-6 bg-blue-500/25 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-full shadow-md transition-colors duration-150"
+              className="my-6 bg-blue-500/25 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-full shadow-md transition-colors duration-150"
               aria-label="Confirmar asistencia"
             >
               Confirmar Asistencia
@@ -458,7 +458,7 @@ const InvitationContent: React.FC<InvitationContentProps> = ({ isPersonalized = 
       )}
 
       {showRsvpForm && (
-        <div className="z-10 mt-4 bg-slate-800/60 p-6 sm:p-8 rounded-xl shadow-2xl w-full max-w-lg">
+        <div className="z-10 mt-4 bg-slate-800/75 p-6 sm:p-8 rounded-xl shadow-2xl w-full max-w-lg">
           <form onSubmit={handleSubmitRsvp} className="space-y-4">
             <div>
               <label htmlFor="name" className="block text-sm font-medium text-blue-300 text-left">
