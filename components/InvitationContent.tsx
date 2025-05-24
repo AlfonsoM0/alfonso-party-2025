@@ -182,7 +182,7 @@ const InvitationContent: React.FC<InvitationContentProps> = ({ isPersonalized = 
       return (
         <div className="min-h-screen flex flex-col items-center justify-center bg-slate-900 p-6 text-center relative">
           <MyVideoAndMusicBackground />
-          <div className="z-10 bg-slate-950/80 p-8 rounded-xl shadow-2xl">
+          <div className="z-10 bg-slate-950/55 p-8 rounded-xl shadow-2xl">
             <LuminousText
               text={submissionMessage || 'Invitación no válida o pendiente.'}
               as="h1"
@@ -210,7 +210,7 @@ const InvitationContent: React.FC<InvitationContentProps> = ({ isPersonalized = 
     return (
       <div className="min-h-screen flex flex-col items-center justify-center bg-slate-900 p-6 text-center relative">
         <MyVideoAndMusicBackground />
-        <div className="z-10 bg-slate-950/80 p-8 rounded-xl shadow-2xl max-w-lg w-full">
+        <div className="z-10 bg-slate-950/55 p-8 rounded-xl shadow-2xl max-w-lg w-full">
           <LuminousText
             text={`¡Hola ${personalizedGuest.name} ${personalizedGuest.lastname}!`}
             as="h1"
@@ -257,11 +257,11 @@ const InvitationContent: React.FC<InvitationContentProps> = ({ isPersonalized = 
         style={{ transform: showRsvpForm ? 'translateY(-60px)' : 'translateY(0)' }}
       >
         {!submissionMessage && !showRsvpForm && (
-          <div className="bg-slate-950/80 p-8 rounded-xl shadow-2xl">
+          <div className="bg-slate-950/55 p-8 rounded-xl shadow-2xl">
             <LuminousText
               text={`¡Te invito a festejar mi cumpleaños!`}
               as="h1"
-              className="text-4xl sm:text-5xl font-bold text-red-400 mb-8"
+              className="text-4xl sm:text-5xl font-bold text-red-600 mb-8"
               customGlow="filter drop-shadow-[0_0_2px_#fff] drop-shadow-[0_0_8px_#fff] drop-shadow-[0_0_20px_#ef4444] drop-shadow-[0_0_30px_#ef4444]"
             />
             <button
@@ -275,7 +275,7 @@ const InvitationContent: React.FC<InvitationContentProps> = ({ isPersonalized = 
       </div>
 
       {submissionMessage && !showRsvpForm && (
-        <div className="z-10 mt-8 bg-slate-950/80 p-6 rounded-xl shadow-2xl text-center">
+        <div className="z-10 mt-8 bg-slate-950/55 p-6 rounded-xl shadow-2xl text-center">
           <LuminousText text={submissionMessage} as="p" className="text-xl text-sky-300" />{' '}
           {/* Brighter blue for success */}
           <button
@@ -291,7 +291,7 @@ const InvitationContent: React.FC<InvitationContentProps> = ({ isPersonalized = 
       )}
 
       {showRsvpForm && (
-        <div className="z-10 mt-4 bg-slate-800/80 p-6 sm:p-8 rounded-xl shadow-2xl w-full max-w-lg">
+        <div className="z-10 mt-4 bg-slate-800/75 p-6 sm:p-8 rounded-xl shadow-2xl w-full max-w-lg">
           <form onSubmit={handleSubmitRsvp} className="space-y-4">
             <div>
               <label htmlFor="name" className="block text-sm font-medium text-blue-300 text-left">

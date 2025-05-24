@@ -40,7 +40,6 @@ export function MyVideoAndMusicBackground() {
         tabIndex={-1}
         style={{ pointerEvents: 'none' }}
       />
-      <div className="absolute top-0 left-0 w-full h-full bg-slate-950/80" />
       {currentAudio && (
         <audio ref={audioRef} src={currentAudio} autoPlay loop style={{ display: 'none' }} />
       )}
