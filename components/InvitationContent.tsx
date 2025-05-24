@@ -356,7 +356,7 @@ const InvitationContent: React.FC<InvitationContentProps> = ({ isPersonalized = 
         style={{ transform: showRsvpForm ? 'translateY(-60px)' : 'translateY(0)' }}
       >
         {!submissionMessage && !showRsvpForm && (
-          <div className="bg-slate-950/55 p-8 rounded-xl shadow-2xl">
+          <div className="bg-slate-950/70 p-8 rounded-xl shadow-2xl">
             <LuminousText
               text={`¡Te invito a festejar mi cumpleaños!`}
               as="h1"
@@ -415,13 +415,13 @@ const InvitationContent: React.FC<InvitationContentProps> = ({ isPersonalized = 
             </p>
             <p className="text-slate-200 text-base mb-2">
               Porfa, llenen este formulario para que tengamos la lista armada y se la pasemos al bar
-              y al boliche.{' '}
+              y al boliche. <br />
               <span className="font-bold text-blue-300">
-                ¡Su confirmación es clave para que todo salga joya!
+                ¡Tu confirmación es clave para que todo salga joya!
               </span>
             </p>
             <p className="text-slate-200 text-base mb-2">
-              ¡No veo la hora de festejar con ustedes, mis amigos queridos!{' '}
+              ¡No veo la hora de festejar con ustedes, mis amigos queridos! <br />
               <span className="font-bold text-yellow-200">¡Será una noche inolvidable!</span>
             </p>
             <p className="text-slate-200 text-base mb-2">¡Nos vemos el sábado!</p>
@@ -432,7 +432,8 @@ const InvitationContent: React.FC<InvitationContentProps> = ({ isPersonalized = 
             </p>
             <button
               onClick={() => setShowRsvpForm(true)}
-              className="bg-gradient-to-r from-red-500 to-rose-600 hover:from-red-600 hover:to-rose-700 text-white font-bold py-3 px-8 rounded-full shadow-lg text-lg transform hover:scale-105 transition-all duration-300"
+              className="mt-6 bg-blue-500/25 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-full shadow-md transition-colors duration-150"
+              aria-label="Confirmar asistencia"
             >
               Confirmar Asistencia
             </button>
@@ -457,7 +458,7 @@ const InvitationContent: React.FC<InvitationContentProps> = ({ isPersonalized = 
       )}
 
       {showRsvpForm && (
-        <div className="z-10 mt-4 bg-slate-800/75 p-6 sm:p-8 rounded-xl shadow-2xl w-full max-w-lg">
+        <div className="z-10 mt-4 bg-slate-800/60 p-6 sm:p-8 rounded-xl shadow-2xl w-full max-w-lg">
           <form onSubmit={handleSubmitRsvp} className="space-y-4">
             <div>
               <label htmlFor="name" className="block text-sm font-medium text-blue-300 text-left">
@@ -470,7 +471,7 @@ const InvitationContent: React.FC<InvitationContentProps> = ({ isPersonalized = 
                 value={formData.name}
                 onChange={handleInputChange}
                 required
-                className="mt-1 block w-full bg-slate-700 border border-slate-600 rounded-md shadow-sm py-2 px-3 text-slate-100 focus:outline-none focus:ring-red-500 focus:border-red-500"
+                className="mt-1 block w-full bg-slate-700 border border-slate-600 rounded-md shadow-sm py-2 px-3 text-slate-100 focus:outline-none focus:ring-red-500 focus:border-red-500 text-center"
               />
               <p className="mt-1 text-xs text-slate-400">
                 * El Nombre y el Apellido son para armar la lista de invitados.
@@ -490,7 +491,7 @@ const InvitationContent: React.FC<InvitationContentProps> = ({ isPersonalized = 
                 value={formData.lastname}
                 onChange={handleInputChange}
                 required
-                className="mt-1 block w-full bg-slate-700 border border-slate-600 rounded-md shadow-sm py-2 px-3 text-slate-100 focus:outline-none focus:ring-red-500 focus:border-red-500"
+                className="mt-1 block w-full bg-slate-700 border border-slate-600 rounded-md shadow-sm py-2 px-3 text-slate-100 focus:outline-none focus:ring-red-500 focus:border-red-500 text-center"
               />
             </div>
             <div>
@@ -504,7 +505,7 @@ const InvitationContent: React.FC<InvitationContentProps> = ({ isPersonalized = 
                 value={formData.email}
                 onChange={handleInputChange}
                 required
-                className="mt-1 block w-full bg-slate-700 border border-slate-600 rounded-md shadow-sm py-2 px-3 text-slate-100 focus:outline-none focus:ring-red-500 focus:border-red-500"
+                className="mt-1 block w-full bg-slate-700 border border-slate-600 rounded-md shadow-sm py-2 px-3 text-slate-100 focus:outline-none focus:ring-red-500 focus:border-red-500 text-center"
               />
               <p className="mt-1 text-xs text-slate-400">
                 * Te llegará la invitación cuando tu solicitud sea aprobada.
@@ -565,7 +566,7 @@ const InvitationContent: React.FC<InvitationContentProps> = ({ isPersonalized = 
             <button
               type="submit"
               disabled={submitting}
-              className="w-full mt-6 bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-4 rounded-full shadow-md transition-colors duration-150 disabled:opacity-60 disabled:cursor-not-allowed"
+              className="w-full mt-6 bg-blue-500/25 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-full shadow-md transition-colors duration-150 disabled:opacity-60 disabled:cursor-not-allowed"
             >
               {submitting ? 'Enviando...' : 'Enviar Confirmación'}
             </button>
@@ -575,7 +576,7 @@ const InvitationContent: React.FC<InvitationContentProps> = ({ isPersonalized = 
                 setShowRsvpForm(false);
                 setSubmissionMessage(null);
               }}
-              className="w-full mt-3 bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded-full shadow-md transition-colors duration-150"
+              className="w-full mt-3 bg-red-500/25 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full shadow-md transition-colors duration-150"
             >
               Cancelar
             </button>
