@@ -387,7 +387,7 @@ const InvitationContent: React.FC<InvitationContentProps> = ({ isPersonalized = 
             <p className="text-slate-200 text-base mb-2">
               Completá el formulario para estar en la lista.
             </p>
-            <p className="text-slate-200 text-base mb-2">¡Froma parte de una noche inolvidable!</p>
+            <p className="text-slate-200 text-base mb-2">¡Forma parte de una noche inolvidable!</p>
             <div className="flex justify-center my-4">
               <WeNeedYouImg sizeCSS="max-w-[180px] w-full h-40" />
             </div>
